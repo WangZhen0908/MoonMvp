@@ -10,15 +10,13 @@ import android.view.View;
  */
 
 public interface Init<P extends IPresenter> {
-    /**
-     * 没有布局
-     */
     int INVALID_LAYOUT = -1;
-    /**
-     * 没有menu布局
-     */
     int INVALID_MENU = -2;
 
+    /**
+     * 返回布局资源ID
+     * @return
+     */
     int getLayoutRes();
 
     int getMenuRes();
@@ -27,11 +25,6 @@ public interface Init<P extends IPresenter> {
 
     void initMenus(Menu menu);
 
-    /**
-     * 在这里初始化Intent传递的参数,以及组件恢复时的参数
-     *
-     * @param savedInstanceState onCreate(Bundle savedInstanceState)
-     */
     void initData(@Nullable Bundle savedInstanceState);
 
     P createPresenter();

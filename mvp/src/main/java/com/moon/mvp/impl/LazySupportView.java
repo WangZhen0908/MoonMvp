@@ -1,9 +1,5 @@
 package com.moon.mvp.impl;
 
-/**
- * Created by Wilson on 2018/3/15.
- */
-
 public class LazySupportView {
     private ISupportView mISupportView;
     private boolean mIsInited;

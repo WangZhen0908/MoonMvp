@@ -52,8 +52,6 @@ public abstract class MVPActivity<P extends IPresenter> extends RxFragmentActivi
         initViews(null, savedInstanceState);
 
         if (getMenuRes() == INVALID_MENU) {
-            //如果没menu，则可以开始初始请求网络数据，
-            // 如果有menu则需待menu初始化后在请求数据，以免数据回来时需要操纵menu按钮
             requestData();
         }
 
