@@ -30,20 +30,10 @@ android {
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
-
+    compile fileTree(include: ['*.jar'], dir: 'libs')
     compile "com.android.support:appcompat-v7:${rootProject.ext.supportVersion}"
     testCompile "junit:junit:${rootProject.ext.junitVersion}"
     androidTestCompile "com.android.support.test:runner:${rootProject.ext.testRunnerVersion}"
     androidTestCompile "com.android.support.test.espresso:espresso-core:${rootProject.ext.espressoVersion}"
-
-    // Android使用的库，里面使用了Android的生命周期方法
-    // 内部引用了基础库，如果使用此库则无需再引用基础库
-    compile 'com.trello.rxlifecycle2:rxlifecycle-android:2.1.0'
-    // Android组件库，里面定义了例如RxAppCompatActivity、RxFragment之类的Android组件
-    // 内部引用了基础库和Android库，如果使用此库则无需再重复引用
-    compile 'com.trello.rxlifecycle2:rxlifecycle-components:2.1.0'
+    implementation project(':mvp')
 }
-
-//apply from: './nexus-push.gradle'
-apply from: './jcenter-push.gradle'
