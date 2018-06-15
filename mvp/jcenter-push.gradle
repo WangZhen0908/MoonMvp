@@ -1,8 +1,8 @@
 apply plugin: 'com.jfrog.bintray'
 apply plugin: 'com.github.dcendents.android-maven'
 
-def siteUrl = 'https://github.com/codezhanghao/CustomProgressbar'
-def gitUrl = 'https://github.com/codezhanghao/CustomProgressbar.git'
+def siteUrl = 'https://blog.csdn.net/moon_nife'
+def gitUrl = 'https://github.com/WangZhen0908/MoonMvp.git'
 
 group = 'com.wz.moon'
 version = '0.0.1'
