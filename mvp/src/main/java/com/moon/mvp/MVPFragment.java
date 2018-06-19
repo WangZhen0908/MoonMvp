@@ -12,9 +12,10 @@ import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.trello.rxlifecycle2.LifecycleTransformer;
 import com.trello.rxlifecycle2.components.support.RxFragment;
 
-public abstract class MVPFragment<P extends IPresenter> extends RxFragment implements IView<P>, Init, ISupportView {
+public abstract class MVPFragment<P extends IPresenter> extends RxFragment implements IView, Init<P>, ISupportView {
 
 
     protected Activity mActivity;
@@ -26,9 +27,6 @@ public abstract class MVPFragment<P extends IPresenter> extends RxFragment imple
     int getMenuRes() {
         return INVALID_MENU;
     }
-
-    @Override
-    public abstract P createPresenter();
 
     @Override
     public void initViews(View view, @Nullable Bundle args) {
@@ -107,6 +105,11 @@ public abstract class MVPFragment<P extends IPresenter> extends RxFragment imple
             inflater.inflate(menuRes, menu);
             requestData();
         }
+    }
+
+    @Override
+    public <T> LifecycleTransformer<T> bindLifecycle() {
+        return bindToLifecycle();
     }
 
     @Override

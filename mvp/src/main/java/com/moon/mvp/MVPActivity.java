@@ -7,9 +7,10 @@ import android.support.annotation.Nullable;
 import android.view.Menu;
 import android.view.View;
 
+import com.trello.rxlifecycle2.LifecycleTransformer;
 import com.trello.rxlifecycle2.components.support.RxFragmentActivity;
 
-public abstract class MVPActivity<P extends IPresenter> extends RxFragmentActivity implements IView<P>, Init {
+public abstract class MVPActivity<P extends IPresenter> extends RxFragmentActivity implements IView, Init<P> {
 
     protected P mPresenter;
 
@@ -88,5 +89,10 @@ public abstract class MVPActivity<P extends IPresenter> extends RxFragmentActivi
             requestData();
         }
         return true;
+    }
+
+    @Override
+    public <T> LifecycleTransformer<T> bindLifecycle() {
+        return bindToLifecycle();
     }
 }

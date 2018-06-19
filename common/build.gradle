@@ -30,9 +30,10 @@ android {
 
 dependencies {
     api fileTree(include: ['*.jar'], dir: 'libs')
+    api "com.android.support:multidex:${rootProject.ext.multidexVersion}"
     api "com.android.support:appcompat-v7:${rootProject.ext.supportVersion}"
     testImplementation "junit:junit:${rootProject.ext.junitVersion}"
     androidTestImplementation "com.android.support.test:runner:${rootProject.ext.testRunnerVersion}"
     androidTestImplementation "com.android.support.test.espresso:espresso-core:${rootProject.ext.espressoVersion}"
-    implementation project(':mvp')
+    api project(':mvp')
 }

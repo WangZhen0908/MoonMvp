@@ -10,7 +10,7 @@ import android.view.View;
  * Created by wangzhen1 on 2017/11/15.
  */
 
-public interface Init {
+public interface Init<P extends IPresenter> {
     int INVALID_LAYOUT = 0;
     int INVALID_MENU = 0;
 
@@ -28,6 +28,8 @@ public interface Init {
      */
     @MenuRes
     int getMenuRes();
+
+    P createPresenter();
 
     /**
      * 初始化View
