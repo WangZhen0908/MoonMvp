@@ -3,6 +3,7 @@ package com.moon.mvp;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -20,7 +21,7 @@ public abstract class MVPFragment<P extends IPresenter> extends RxFragment imple
     protected Activity mActivity;
     protected P mPresenter;
     protected Bundle args;
-    private LazySupportView mLazySupprotView = new LazySupportView(this);
+    private LazySupportView mLazySupportView = new LazySupportView(this);
 
     @Override
     public int getMenuRes() {
@@ -69,9 +70,9 @@ public abstract class MVPFragment<P extends IPresenter> extends RxFragment imple
 
     @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v = LayoutInflater.from(mActivity).inflate(getLayoutRes(), container, false);
-        mLazySupprotView.onCreateView();
+        mLazySupportView.onCreateView();
         return v;
     }
 
@@ -118,7 +119,7 @@ public abstract class MVPFragment<P extends IPresenter> extends RxFragment imple
     @Override
     public void setUserVisibleHint(boolean isVisibleToUser) {
         super.setUserVisibleHint(isVisibleToUser);
-        mLazySupprotView.setUserVisibleHint(isVisibleToUser);
+        mLazySupportView.setUserVisibleHint(isVisibleToUser);
     }
 
     @Override

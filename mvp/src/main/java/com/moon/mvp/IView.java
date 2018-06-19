@@ -1,9 +1,7 @@
 package com.moon.mvp;
 
-import com.trello.rxlifecycle2.LifecycleTransformer;
 
-
-public interface IView {
+public interface IView extends ILifecycle {
 
     void showLoading();
 
@@ -14,7 +12,5 @@ public interface IView {
     void hideEmptyLoading();
 
     void showMessage(String message);
-
-    <T> LifecycleTransformer<T> bindLifecycle();
 
 }
