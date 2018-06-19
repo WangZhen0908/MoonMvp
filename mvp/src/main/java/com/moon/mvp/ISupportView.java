@@ -1,4 +1,4 @@
-package com.moon.mvp.impl;
+package com.moon.mvp;
 
 public interface ISupportView {
 

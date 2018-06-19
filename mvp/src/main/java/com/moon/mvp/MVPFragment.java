@@ -3,6 +3,7 @@ package com.moon.mvp;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.MenuRes;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
@@ -11,20 +12,18 @@ import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.moon.mvp.impl.ISupportView;
-import com.moon.mvp.impl.LazySupportView;
 import com.trello.rxlifecycle2.components.support.RxFragment;
 
-public abstract class MVPFragment<P extends IPresenter> extends RxFragment implements IView, Init<P>, ISupportView {
+public abstract class MVPFragment<P extends IPresenter> extends RxFragment implements IView<P>, Init, ISupportView {
 
 
     protected Activity mActivity;
     protected P mPresenter;
-    protected Bundle args;
     private LazySupportView mLazySupportView = new LazySupportView(this);
 
     @Override
-    public int getMenuRes() {
+    public @MenuRes
+    int getMenuRes() {
         return INVALID_MENU;
     }
 
@@ -42,7 +41,7 @@ public abstract class MVPFragment<P extends IPresenter> extends RxFragment imple
     }
 
     @Override
-    public void initData(@Nullable Bundle args) {
+    public void initExtraData(@Nullable Bundle args) {
 
     }
 
@@ -64,7 +63,7 @@ public abstract class MVPFragment<P extends IPresenter> extends RxFragment imple
         if (savedInstanceState != null) {
             args = savedInstanceState;
         }
-        initData(args);
+        initExtraData(args);
         setHasOptionsMenu(getMenuRes() != INVALID_MENU);
     }
 
@@ -83,7 +82,6 @@ public abstract class MVPFragment<P extends IPresenter> extends RxFragment imple
         if (savedInstanceState != null) {
             args = savedInstanceState;
         }
-        this.args = args;
         mPresenter = createPresenter();
         initViews(view, args);
     }

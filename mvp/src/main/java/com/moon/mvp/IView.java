@@ -1,7 +1,9 @@
 package com.moon.mvp;
 
 
-public interface IView extends ILifecycle {
+public interface IView<P extends IPresenter> extends ILifecycle {
+
+    P createPresenter();
 
     void showLoading();
 
