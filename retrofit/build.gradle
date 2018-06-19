@@ -1,0 +1,55 @@
+apply plugin: 'com.android.library'
+
+android {
+    compileSdkVersion rootProject.ext.compileSdkVersion
+
+    defaultConfig {
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+        debug{
+
+        }
+
+    }
+}
+
+dependencies {
+
+    testImplementation "junit:junit:${rootProject.ext.junitVersion}"
+    androidTestImplementation "com.android.support.test.espresso:espresso-idling-resource:${rootProject.ext.espressoVersion}"
+    androidTestImplementation("com.android.support.test.espresso:espresso-core:${rootProject.ext.espressoVersion}", {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+
+    api fileTree(dir: 'libs', include: ['*.jar'])
+
+    api "com.android.support:appcompat-v7:${rootProject.ext.supportVersion}"
+
+    /*rx-android-java*/
+    api 'com.squareup.retrofit2:adapter-rxjava2:2.3.0'
+    api 'com.jakewharton.rxbinding2:rxbinding:2.0.0'
+    api 'com.trello.rxlifecycle2:rxlifecycle:2.1.0'
+    api 'com.trello.rxlifecycle2:rxlifecycle-components:2.1.0'
+    api 'com.squareup.retrofit2:retrofit:2.3.0'
+    api 'com.squareup.retrofit2:converter-gson:2.3.0'
+
+    api 'com.squareup.okhttp3:okhttp:3.9.0'
+    api 'com.squareup.okio:okio:1.13.0'
+
+    api 'io.reactivex.rxjava2:rxjava:2.1.3'
+    api 'io.reactivex.rxjava2:rxandroid:2.0.1'
+
+
+}

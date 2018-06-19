@@ -25,4 +25,10 @@ public class MainFragment extends BaseFragment<MainContract.Presenter> implement
     public int getLayoutRes() {
         return R.layout.app_fragment_main;
     }
+
+    @Override
+    public void requestData() {
+        super.requestData();
+        mPresenter.test();
+    }
 }

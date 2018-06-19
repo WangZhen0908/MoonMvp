@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.WindowManager;
 
 import com.moon.common.base.mvp.BasePresenter;
+import com.moon.library.utils.ToastUtils;
 import com.moon.mvp.MVPActivity;
 
 public abstract class BaseActivity<P extends BasePresenter> extends MVPActivity<P> {
@@ -27,7 +28,7 @@ public abstract class BaseActivity<P extends BasePresenter> extends MVPActivity<
 
     @Override
     public void showMessage(String message) {
-
+        ToastUtils.show(message);
     }
 
     @Override

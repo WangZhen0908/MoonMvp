@@ -14,6 +14,8 @@ public interface MainContract {
         public Presenter(View view) {
             super(view);
         }
+
+        public abstract void test();
     }
 
 }

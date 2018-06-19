@@ -1,12 +1,13 @@
 apply plugin: 'com.android.library'
 
 android {
+    compileSdkVersion 27
 
-    compileSdkVersion rootProject.ext.compileSdkVersion
+
 
     defaultConfig {
-        minSdkVersion rootProject.ext.minSdkVersion
-        targetSdkVersion rootProject.ext.targetSdkVersion
+        minSdkVersion 16
+        targetSdkVersion 27
         versionCode 1
         versionName "1.0"
 
@@ -21,21 +22,16 @@ android {
         }
     }
 
-    sourceSets {
-        main {
-            res.srcDirs = ['src/main/res', 'src/main/res/layout', 'src/main/res/drawable-xxhdpi']
-        }
-    }
 }
 
 dependencies {
-    api fileTree(include: ['*.jar'], dir: 'libs')
-    api "com.android.support:multidex:${rootProject.ext.multidexVersion}"
+    api fileTree(dir: 'libs', include: ['*.jar'])
+
     api "com.android.support:appcompat-v7:${rootProject.ext.supportVersion}"
     testImplementation "junit:junit:${rootProject.ext.junitVersion}"
     androidTestImplementation "com.android.support.test:runner:${rootProject.ext.testRunnerVersion}"
     androidTestImplementation "com.android.support.test.espresso:espresso-core:${rootProject.ext.espressoVersion}"
-    api project(':mvp')
-    api project(':retrofit')
-    api project(':library')
+
+    api 'com.squareup.retrofit2:adapter-rxjava2:2.3.0'
+    api 'com.jakewharton.rxbinding2:rxbinding:2.0.0'
 }

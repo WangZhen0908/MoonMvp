@@ -4,6 +4,7 @@ import android.support.annotation.IdRes;
 import android.view.View;
 
 import com.moon.common.base.mvp.BasePresenter;
+import com.moon.library.utils.ToastUtils;
 import com.moon.mvp.MVPFragment;
 
 public abstract class BaseFragment<P extends BasePresenter> extends MVPFragment<P> {
@@ -14,7 +15,7 @@ public abstract class BaseFragment<P extends BasePresenter> extends MVPFragment<
 
     @Override
     public void showMessage(String message) {
-
+        ToastUtils.show(message);
     }
 
     @Override
