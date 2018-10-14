@@ -1,10 +1,12 @@
-package com.bizwell.retrofit;
+package com.moon.retrofit;
 
 import java.util.concurrent.TimeUnit;
 
 import javax.net.ssl.SSLSocketFactory;
 import javax.net.ssl.X509TrustManager;
 
+import okhttp3.ConnectionPool;
+import okhttp3.Dispatcher;
 import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
@@ -14,6 +16,8 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class RetrofitHelper {
 
     private static final int MAX_TIME = 60;
+    private static Dispatcher sDispatcher = new Dispatcher();
+    private static ConnectionPool sConnectionPool = new ConnectionPool();
 
     public static <T> T create(final Class<T> service, String baseUrl, Interceptor... interceptors) {
         return new Retrofit.Builder()
@@ -40,6 +44,8 @@ public class RetrofitHelper {
                 .readTimeout(MAX_TIME, TimeUnit.SECONDS)
                 .writeTimeout(MAX_TIME, TimeUnit.SECONDS)
                 .retryOnConnectionFailure(true)
+                .dispatcher(sDispatcher)
+                .connectionPool(sConnectionPool)
                 .sslSocketFactory(sslSocketFactory, x509TrustManager)
                 .hostnameVerifier(HttpsHelper.getHostnameVerifierUnSafe())
                 .build();

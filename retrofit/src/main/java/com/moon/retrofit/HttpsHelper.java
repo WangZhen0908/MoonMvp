@@ -1,4 +1,4 @@
-package com.bizwell.retrofit;
+package com.moon.retrofit;
 
 import android.content.Context;
 import android.support.annotation.RawRes;
