@@ -58,7 +58,9 @@ public abstract class MVPActivity<P extends IPresenter> extends RxFragmentActivi
             setContentView(getLayoutRes());
         }
         initExtraData(savedInstanceState);
-        mPresenter = createPresenter();
+        if (mPresenter == null) {
+            mPresenter = createPresenter();
+        }
         initViews(null, savedInstanceState);
 
         if (getMenuRes() == INVALID_MENU) {

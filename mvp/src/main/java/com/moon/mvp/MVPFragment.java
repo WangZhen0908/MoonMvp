@@ -80,7 +80,9 @@ public abstract class MVPFragment<P extends IPresenter> extends RxFragment imple
         if (savedInstanceState != null) {
             args = savedInstanceState;
         }
-        mPresenter = createPresenter();
+        if (mPresenter == null) {
+            mPresenter = createPresenter();
+        }
         initViews(view, args);
     }
 

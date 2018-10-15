@@ -2,13 +2,25 @@ package com.moon.library.utils;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.support.v4.util.ArrayMap;
 
 public class SessionHelper {
 
     protected SharedPreferences settings;
     protected SharedPreferences.Editor editor;
 
-    public SessionHelper(Context context, String name) {
+    private static ArrayMap<String, SessionHelper> sHelpers = new ArrayMap<>();
+
+    public static SessionHelper getInstance(Context context, String name) {
+        SessionHelper sessionHelper = sHelpers.get(name);
+        if (sessionHelper == null) {
+            sessionHelper = new SessionHelper(context, name);
+            sHelpers.put(name, sessionHelper);
+        }
+        return sessionHelper;
+    }
+
+    private SessionHelper(Context context, String name) {
         settings = context.getSharedPreferences(name, Context.MODE_PRIVATE);
         editor = settings.edit();
     }
