@@ -15,12 +15,11 @@ import android.view.ViewGroup;
 import com.trello.rxlifecycle2.LifecycleTransformer;
 import com.trello.rxlifecycle2.components.support.RxFragment;
 
-public abstract class MVPFragment<P extends IPresenter> extends RxFragment implements IView, Init<P>, ISupportView {
+public abstract class MVPFragment<P extends IPresenter> extends RxFragment implements IView, Init<P> {
 
 
     protected Activity mActivity;
     protected P mPresenter;
-    private LazySupportView mLazySupportView = new LazySupportView(this);
 
     @Override
     public @MenuRes
@@ -69,7 +68,6 @@ public abstract class MVPFragment<P extends IPresenter> extends RxFragment imple
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v = LayoutInflater.from(mActivity).inflate(getLayoutRes(), container, false);
-        mLazySupportView.onCreateView();
         return v;
     }
 
@@ -119,19 +117,4 @@ public abstract class MVPFragment<P extends IPresenter> extends RxFragment imple
         super.onDetach();
     }
 
-    @Override
-    public void setUserVisibleHint(boolean isVisibleToUser) {
-        super.setUserVisibleHint(isVisibleToUser);
-        mLazySupportView.setUserVisibleHint(isVisibleToUser);
-    }
-
-    @Override
-    public void onLazyInitView() {
-
-    }
-
-    @Override
-    public void onFragmentShow() {
-
-    }
 }

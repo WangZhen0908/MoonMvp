@@ -1,4 +1,4 @@
-package com.moon.mvp;
+package com.moon.common.base.fragment;
 
 public interface ISupportView {
 

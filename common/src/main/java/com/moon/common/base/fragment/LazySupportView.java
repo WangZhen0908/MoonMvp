@@ -1,6 +1,4 @@
-package com.moon.mvp;
-
-import com.moon.mvp.ISupportView;
+package com.moon.common.base.fragment;
 
 public class LazySupportView {
     private ISupportView mISupportView;
