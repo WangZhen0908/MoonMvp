@@ -11,10 +11,12 @@ import android.view.ViewGroup;
 import com.moon.common.base.mvp.BasePresenter;
 import com.moon.library.utils.ToastUtils;
 import com.moon.mvp.MVPFragment;
+import com.moon.widget.LoadingDialog;
 
 public abstract class BaseFragment<P extends BasePresenter> extends MVPFragment<P> implements ISupportView {
 
     private LazySupportView mLazySupportView = new LazySupportView(this);
+    private LoadingDialog mLoadingDialog;
 
     protected <T extends View> T $BindView(View contentView, @IdRes int resId) {
         return contentView.findViewById(resId);
@@ -51,12 +53,20 @@ public abstract class BaseFragment<P extends BasePresenter> extends MVPFragment<
 
     @Override
     public void showLoading() {
+        if (mLoadingDialog == null) {
+            mLoadingDialog = new LoadingDialog(mActivity);
+        }
 
+        if (!mLoadingDialog.isShowing()) {
+            mLoadingDialog.show();
+        }
     }
 
     @Override
     public void hideLoading() {
-
+        if (mLoadingDialog != null && mLoadingDialog.isShowing()) {
+            mLoadingDialog.dismiss();
+        }
     }
 
     @Override

@@ -8,8 +8,11 @@ import android.view.WindowManager;
 import com.moon.common.base.mvp.BasePresenter;
 import com.moon.library.utils.ToastUtils;
 import com.moon.mvp.MVPActivity;
+import com.moon.widget.LoadingDialog;
 
 public abstract class BaseActivity<P extends BasePresenter> extends MVPActivity<P> {
+
+    private LoadingDialog mLoadingDialog;
 
     @Override
     public abstract P createPresenter();
@@ -34,11 +37,21 @@ public abstract class BaseActivity<P extends BasePresenter> extends MVPActivity<
     @Override
     public void showLoading() {
 
+        if (mLoadingDialog == null) {
+            mLoadingDialog = new LoadingDialog(this);
+        }
+
+        if (!mLoadingDialog.isShowing()) {
+            mLoadingDialog.show();
+        }
+
     }
 
     @Override
     public void hideLoading() {
-
+        if (mLoadingDialog != null && mLoadingDialog.isShowing()) {
+            mLoadingDialog.dismiss();
+        }
     }
 
     @Override
