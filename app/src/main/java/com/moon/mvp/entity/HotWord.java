@@ -2,7 +2,11 @@ package com.moon.mvp.entity;
 
 import com.moon.common.base.entity.Entity;
 
-public class HotWord implements Entity {
+import java.io.Serializable;
+
+public class HotWord implements Entity, Serializable {
+
+    public static final long serialVersionUID = 1;
 
     /**
      * id : 6

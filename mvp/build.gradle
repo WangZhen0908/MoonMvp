@@ -1,4 +1,5 @@
 apply plugin: 'com.android.library'
+apply plugin: 'maven'
 
 android {
 
@@ -44,8 +45,49 @@ dependencies {
     api 'com.trello.rxlifecycle2:rxlifecycle-components:2.1.0'
 }
 //指定编译的编码
-tasks.withType(JavaCompile){
+tasks.withType(JavaCompile) {
     options.encoding = "UTF-8"
 }
-apply from: './nexus-push.gradle'
+//apply from: './nexus-push.gradle'
 //apply from: './jcenter-push.gradle'
+
+//VERSION =  '1.1.0'
+//ARTIFACT_ID= 'testmaven'
+//GROUP_ID ='demo.xiaxiayige.com'
+//PACKAGING ='aar'
+//DESCRIPTION=F 'update version 1.1.0'
+
+uploadArchives {
+    configuration = configurations.archives
+    repositories {
+        mavenDeployer {
+            repository(url: 'https://repo.rdc.aliyun.com/repository/36419-release-VmYg80') {
+                authentication(userName: 'KCZEjs', password: 'm5BAR4fOGY')
+            }
+            pom.project {
+                version '1.2.0'
+                artifactId 'mvp'
+                groupId 'com.wz.moon'
+                packaging 'jar'
+                description 'update version 1.2.0'
+            }
+        }
+    }
+}
+//uploadArchives {
+//    configuration = configurations.archives
+//    repositories {
+//        mavenDeployer {
+//            repository(url: 'http://47.100.228.194:8081/repository/maven-releases/') {
+//                authentication(userName: 'admin', password: 'admin123')
+//            }
+//            pom.project {
+//                version '1.1.0'
+//                artifactId 'mvp'
+//                groupId 'com.wz.moon'
+//                packaging 'jar'
+//                description 'update version 1.1.0'
+//            }
+//        }
+//    }
+//}
