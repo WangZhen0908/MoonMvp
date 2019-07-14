@@ -6,7 +6,6 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.moon.common.base.fragment.BaseFragment;
-import com.moon.library.utils.ACache;
 import com.moon.mvp.demo.R;
 import com.moon.mvp.demo.main.contract.MainContract;
 import com.moon.mvp.demo.main.presenter.MainPresenter;
