@@ -15,20 +15,20 @@
 
         <activity android:name="com.moon.mvp.test.HomeActivity" />
         <!--<activity android:name="com.moon.mvp.test.SplashActivity" />-->
-        <activity android:name="com.moon.mvp.test.SplashActivity">
+        <!--<activity android:name="com.moon.mvp.test.SplashActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>-->
+        <activity android:name=".main.activity.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <!--<activity android:name=".main.activity.MainActivity">-->
-        <!--<intent-filter>-->
-        <!--<action android:name="android.intent.action.MAIN" />-->
-
-        <!--<category android:name="android.intent.category.LAUNCHER" />-->
-        <!--</intent-filter>-->
-        <!--</activity>-->
     </application>
 
 </manifest>
