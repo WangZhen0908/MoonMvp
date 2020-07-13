@@ -1,4 +1,5 @@
 apply plugin: 'com.android.application'
+apply plugin: 'com.alipay.apollo.baseline.config'
 
 android {
     compileSdkVersion rootProject.ext.compileSdkVersion
@@ -43,4 +44,6 @@ dependencies {
     })
     androidTestImplementation "com.android.support.test.espresso:espresso-idling-resource:${rootProject.ext.espressoVersion}"
     api project(':common')
+    implementation 'com.mpaas.android:scan:10.1.68.5'
+    implementation "com.mpaas.android:$mpaas_artifact:$mpaas_baseline"
 }

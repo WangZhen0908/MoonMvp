@@ -1,17 +1,28 @@
-// Top-level build file where you can add configuration options common to all sub-projects/modules.
+apply plugin: 'com.alipay.apollo.optimize'// Top-level build file where you can add configuration options common to all sub-projects/modules.
 
 buildscript {
-    
+    ext.mpaas_artifact = "mpaas-baseline"
+    ext.mpaas_baseline = "10.1.68-5"
+
     repositories {
         maven{ url 'http://maven.aliyun.com/nexus/content/groups/public/'}
         google()
         jcenter()
+        maven {
+            url 'http://mvn.cloud.alipay.com/nexus/content/repositories/releases/'
+            name 'alipay'
+            credentials {
+                username 'mvn_read_ws'
+                password 'mrk8929'
+            }
+        }
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:3.1.2'
         classpath 'com.github.dcendents:android-maven-gradle-plugin:2.1'
         classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.7.3'
-        
+        classpath 'com.android.boost.easyconfig:easyconfig:2.4.1'
+
 
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
@@ -23,6 +34,14 @@ allprojects {
         maven{ url 'http://maven.aliyun.com/nexus/content/groups/public/'}
         google()
         jcenter()
+        maven {
+            url 'http://mvn.cloud.alipay.com/nexus/content/repositories/releases/'
+            name 'alipay'
+            credentials {
+                username 'mvn_read_ws'
+                password 'mrk8929'
+            }
+        }
     }
 }
 
@@ -35,7 +54,7 @@ ext {
     compileSdkVersion = 27
     buildToolsVersion = "27.0.1"
     supportVersion = "27.0.1"
-    minSdkVersion = 16
+    minSdkVersion = 18
     targetSdkVersion = 27
 
     versionCode = 11
